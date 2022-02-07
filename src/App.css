@@ -28,6 +28,27 @@
   color: #61dafb;
 }
 
+.jumbotron {
+  background-image: url('./200814092431-01b-michael-jordan-sneakers-auction.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.text-wrap {
+  background-color: rgba(0, 0, 0, 0.63);
+  color: #fff;
+}
+
+/* .shoe-list {
+  display: flex;
+  justify-content: center;
+} */
+
+.shoe-img {
+  width: 100%;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
