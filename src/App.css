@@ -55,6 +55,23 @@ a, a:active, a:visited, a:focus
   width: 100%;
 }
 
+.loading-wrap {
+  position: fixed;
+  /* width: 100%; */
+  padding: 0 40px 10px 40px;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #282c34ad;
+  box-sizing: border-box;
+}
+.loading {
+  color: #fff;
+  font-size: 100px;
+  animation: loding 0.4s alternate infinite;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -62,5 +79,11 @@ a, a:active, a:visited, a:focus
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes loding {
+  to {
+    opacity: 0.2;
   }
 }
