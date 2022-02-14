@@ -4,7 +4,6 @@
 // 리액트 반복문에 키값을 넣어야하는 이유
 // https://velog.io/@chyoon0512/React-map-%EC%82%AC%EC%9A%A9%EC%8B%9C-key-props%EB%A5%BC-%EB%B6%80%EC%97%AC%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0
 import React, { useState, useContext } from "react";
-import logo from "./logo.svg";
 import {
   Navbar,
   Container,
@@ -20,13 +19,13 @@ import { Link, Routes, Route, NavLink } from "react-router-dom";
 import Detail from "./Detail";
 import axios from "axios"
 export let stockContext = React.createContext();
-
+//같은 값을 공유하는 범위 생성
 
 function App() {
   let [shoes, setShoes] = useState(Data);
   let [loading, setLoading] = useState(false);
-  let [stock, setStock] = useState(22, 11, 12);
-
+  let [stock, setStock] = useState([10,20,12]);
+  
   function ShoeList(props) {
     let stocks = useContext(stockContext)
     return shoes.map((shoe, shoeIndex) => (
@@ -38,7 +37,7 @@ function App() {
         <h4>{props.shoes[shoeIndex].title}</h4>
         <p>{props.shoes[shoeIndex].content}</p>
         <p>{props.shoes[shoeIndex].price} won</p>
-        {stocks[0]}
+        {`재고 : ${stocks[shoeIndex]}`}
 
       </div>
     ));
@@ -57,11 +56,9 @@ function App() {
   function MainItemList() {
     return (
       <div className="container">
-        <stockContext.Provider value={stock}>
           <div className="row">
             <ShoeList shoes={shoes} />
           </div>
-        </stockContext.Provider>
         <button className="btn btn-primary" onClick={() => {
           setLoading(true)
           axios.get("https://codingapple1.github.io/shop/data2.json")
@@ -147,7 +144,7 @@ function App() {
       <stockContext.Provider value={stock}>
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
-          <Route path="/detail/:id" element={<Detail shoes={shoes} stock={stock} setStock={setStock} />}></Route>
+          <Route path="/detail/:id" element={<Detail shoes={shoes} stock={stock} setStock={setStock}/>}></Route>
           <Route path="/id"></Route>
         </Routes>
       </stockContext.Provider>

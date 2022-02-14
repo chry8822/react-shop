@@ -14,12 +14,11 @@ let BoxTitle = styled.h4`
 `;
 
 function Detail(props) {
-  let stocks = useContext(stockContext)
   let [alert, setAlert] = useState(true);
 
-  function Stock (){
+  function Stock (props){
     return (
-      <p>STOCK : {stocks} </p>
+      <p>STOCK : {props.stock[0]} </p>
     )
   }
 
@@ -66,8 +65,8 @@ function Detail(props) {
           <h4>{detailItem.title}</h4>
           <p>{detailItem.content}</p>
           <p>{detailItem.price} won</p>
-          <Stock />
-          <button className="btn btn-danger m-2" onClick={()=>{props.setStock()}} > 주문하기</button>
+          <Stock stock={props.stock}/>
+          <button className="btn btn-danger m-2" onClick={()=>{}} > 주문하기</button>
           <button className="btn btn-danger" onClick={() => {
             navigate("/")
           }}>뒤로가기</button>
