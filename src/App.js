@@ -12,20 +12,24 @@ import {
   Button,
   Form,
   FormControl,
+  Table
 } from "react-bootstrap";
 import "./App.css";
 import Data from "./data";
 import { Link, Routes, Route, NavLink } from "react-router-dom";
-import Detail from "./Detail";
+import Detail from "./component/Detail";
+import Cart from "./component/Cart"
 import axios from "axios"
+
+
 export let stockContext = React.createContext();
 //같은 값을 공유하는 범위 생성
 
 function App() {
   let [shoes, setShoes] = useState(Data);
   let [loading, setLoading] = useState(false);
-  let [stock, setStock] = useState([10,20,12]);
-  
+  let [stock, setStock] = useState([10, 20, 12]);
+
   function ShoeList(props) {
     let stocks = useContext(stockContext)
     return shoes.map((shoe, shoeIndex) => (
@@ -56,9 +60,9 @@ function App() {
   function MainItemList() {
     return (
       <div className="container">
-          <div className="row">
-            <ShoeList shoes={shoes} />
-          </div>
+        <div className="row">
+          <ShoeList shoes={shoes} />
+        </div>
         <button className="btn btn-primary" onClick={() => {
           setLoading(true)
           axios.get("https://codingapple1.github.io/shop/data2.json")
@@ -144,8 +148,9 @@ function App() {
       <stockContext.Provider value={stock}>
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
-          <Route path="/detail/:id" element={<Detail shoes={shoes} stock={stock} setStock={setStock}/>}></Route>
+          <Route path="/detail/:id" element={<Detail shoes={shoes} stock={stock} setStock={setStock} />}></Route>
           <Route path="/id"></Route>
+          <Route path="/cart" element={<Cart />}></Route>
         </Routes>
       </stockContext.Provider>
 

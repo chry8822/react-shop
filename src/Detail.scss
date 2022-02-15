@@ -1,10 +1,27 @@
 
 $main-color : #ff0000;
 
+.wow-enter {
+   opacity: 0;
+}
+.wow-enter-active {
+   opacity: 1;
+   transition: all 0.5s;
+}
+
+.alertClose-enter {
+  opacity: 1;
+}
+.alertClose-enter-active {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
 
 .red {
   color: $main-color;
-}
+}  
+
 
 
 // 스타일을 함수화 하여 코드 축약과 재사용성을 높인다.
